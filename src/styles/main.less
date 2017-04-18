@@ -6,3 +6,43 @@
 .auth-link-btn {
     margin-top: 6px;
 }
+
+.settings-wrap , .register-wrap {
+    [type="password"]:invalid {
+        background-color: rgba(251, 13, 13, 0.25);
+    }
+}
+
+.user-panel-wrap {
+    margin-top: 10px;
+
+    a {
+        color: #333;
+    }
+}
+
+.settings-wrap {
+    width: 600px;
+}
+
+.messages-wrap {
+    height: 300px;
+    overflow: auto;
+
+    .message {
+        padding-bottom: 5px;
+        border-bottom: 1px solid #ddd;
+
+        .author {
+            display: inline-block;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        .date {
+
+        }
+        .text {
+            margin: 5px 10px;
+        }
+    }
+}

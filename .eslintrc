@@ -1,0 +1,22 @@
+{
+  "extends": "airbnb",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true,
+    },
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "jasmine": true,
+    "mocha": true,
+  },
+  "globals": {
+    "socket": true,
+  },
+  "rules": {
+    "no-unused-vars": ["error", { "vars": "all", "args": "none", "ignoreRestSiblings": false }],
+    "no-use-before-define": ["error", { "functions": false, "classes": false, "variables": false }],
+    "no-param-reassign": ["error", { "props": false }]
+  }
+}

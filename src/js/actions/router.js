@@ -1,15 +1,11 @@
-export const push = function(url) {
-    return {
-        type:   'ROUTER',
-        method: 'push',
-        url:    url
-    }
-}
+export const push = url => ({
+  type: 'ROUTER',
+  method: 'push',
+  url,
+});
 
-export const replace = function(url) {
-    return {
-        type:   'ROUTER',
-        method: 'replace',
-        url:    url
-    }
-}
+export const replace = url => ({
+  type: 'ROUTER',
+  method: 'replace',
+  url,
+});

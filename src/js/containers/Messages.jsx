@@ -1,22 +1,20 @@
-'use strict';
-
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as routerActions from '../actions/router';
-import * as userActions from '../actions/user';
+import * as messagesActions from '../actions/messages';
 
-import Register from '../components/Register.jsx';
+import Messages from '../components/Messages/index';
 
-function mapStateToProps({ user, messages }) {
-    return { user, messages };
+function mapStateToProps({ messages, user }) {
+  return { messages, user };
 }
 
 function mapActionsToProps(dispatch) {
-    return {
-        routerActions: bindActionCreators(routerActions, dispatch),
-        userActions: bindActionCreators(userActions, dispatch)
-    };
+  return {
+    routerActions: bindActionCreators(routerActions, dispatch),
+    messagesActions: bindActionCreators(messagesActions, dispatch),
+  };
 }
 
-export default connect(mapStateToProps, mapActionsToProps)(Register);
+export default connect(mapStateToProps, mapActionsToProps)(Messages);
