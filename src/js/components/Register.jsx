@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router';
+
+const minPasswordLength = 5;
 
 export default class Register extends Component {
 
@@ -21,12 +24,12 @@ export default class Register extends Component {
     const message = this.props.user.register_message;
 
     if (!message) return null;
-    return <div className="alert alert-danger">{ message }</div>;
+    return <div className="alert alert-danger">{message}</div>;
   }
 
   checkConfirmPassword() {
     const isTheSame = this.password.value === this.confirm_password.value &&
-                      this.password.value.length > 5;
+                      this.password.value.length > minPasswordLength;
 
     this.confirm_password.setCustomValidity(isTheSame ? '' : 'Wrong password confirm.');
     return isTheSame;
@@ -35,14 +38,14 @@ export default class Register extends Component {
   render() {
     return (
       <div className="register-wrap">
-        { this.showRegisterMessage() }
+        {this.showRegisterMessage()}
         <div className="panel panel-default">
           <div className="panel-heading">Registration</div>
           <div className="panel-body">
-            <form onSubmit={(e) => { this.sendForm(e); }} >
+            <form onSubmit={e => this.sendForm(e)} >
               <div className="form-group">
                 <input
-                  ref={(input) => { this.name = input; }}
+                  ref={input => (this.name = input)}
                   type="text"
                   className="form-control"
                   placeholder="Name"
@@ -51,7 +54,7 @@ export default class Register extends Component {
               </div>
               <div className="form-group">
                 <input
-                  ref={(input) => { this.email = input; }}
+                  ref={input => (this.email = input)}
                   type="email"
                   className="form-control"
                   placeholder="Email"
@@ -64,7 +67,7 @@ export default class Register extends Component {
               </div>
               <div className="form-group">
                 <input
-                  ref={(input) => { this.password = input; }}
+                  ref={input => (this.password = input)}
                   type="password"
                   className="form-control"
                   minLength="6"
@@ -75,7 +78,7 @@ export default class Register extends Component {
               </div>
               <div className="form-group">
                 <input
-                  ref={(input) => { this.confirm_password = input; }}
+                  ref={input => (this.confirm_password = input)}
                   type="password"
                   className="form-control"
                   minLength="6"
@@ -98,3 +101,13 @@ export default class Register extends Component {
     );
   }
 }
+
+Register.propTypes = {
+  authActions: PropTypes.shape({
+    auth: PropTypes.func.isRequired,
+    registration: PropTypes.func.isRequired,
+  }).isRequired,
+  user: PropTypes.shape({
+    register_message: PropTypes.string,
+  }).isRequired,
+};

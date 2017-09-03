@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 
 export default class Auth extends Component {
@@ -15,7 +16,7 @@ export default class Auth extends Component {
     const message = this.props.user.auth_message;
 
     if (!message) return null;
-    return <div className="alert alert-danger">{ message }</div>;
+    return <div className="alert alert-danger">{message}</div>;
   }
 
   render() {
@@ -25,10 +26,10 @@ export default class Auth extends Component {
         <div className="panel panel-default">
           <div className="panel-heading">Auth</div>
           <div className="panel-body">
-            <form onSubmit={(e) => { this.sendForm(e); }} >
+            <form onSubmit={(e) => this.sendForm(e)} >
               <div className="form-group">
                 <input
-                  ref={(input) => { this.email = input; }}
+                  ref={(input) => (this.email = input)}
                   type="text"
                   className="form-control"
                   placeholder="Email"
@@ -37,7 +38,7 @@ export default class Auth extends Component {
               </div>
               <div className="form-group">
                 <input
-                  ref={(input) => { this.password = input; }}
+                  ref={(input) => (this.password = input)}
                   type="password"
                   className="form-control"
                   placeholder="Password"
@@ -57,3 +58,12 @@ export default class Auth extends Component {
     );
   }
 }
+
+Auth.propTypes = {
+  authActions: PropTypes.shape({
+    auth: PropTypes.func.isRequired,
+  }).isRequired,
+  user: PropTypes.shape({
+    auth_message: PropTypes.string,
+  }).isRequired,
+};

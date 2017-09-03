@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import { Link } from 'react-router';
 
 export default class UserPanel extends Component {
@@ -22,3 +24,12 @@ export default class UserPanel extends Component {
     );
   }
 }
+
+UserPanel.propTypes = {
+  userActions: PropTypes.shape({
+    logOut: PropTypes.func.isRequired,
+  }).isRequired,
+  user: PropTypes.shape({
+    data: PropTypes.object,
+  }).isRequired,
+};

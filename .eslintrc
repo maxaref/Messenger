@@ -2,17 +2,17 @@
   "extends": "airbnb",
   "parserOptions": {
     "ecmaFeatures": {
-      "experimentalObjectRestSpread": true,
-    },
+      "experimentalObjectRestSpread": true
+    }
   },
   "env": {
     "browser": true,
     "node": true,
     "jasmine": true,
-    "mocha": true,
+    "mocha": true
   },
   "globals": {
-    "socket": true,
+    "socket": true
   },
   "rules": {
     "no-unused-vars": ["error", { "vars": "all", "args": "none", "ignoreRestSiblings": false }],

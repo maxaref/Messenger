@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export default class Add extends Component {
   addMessage(e) {
@@ -14,7 +15,7 @@ export default class Add extends Component {
       <div>
         <form onSubmit={e => this.addMessage(e)}>
           <textarea
-            ref={(input) => { this.text = input; }}
+            ref={input => (this.text = input)}
             className="form-control"
             rows="3"
             required
@@ -26,3 +27,7 @@ export default class Add extends Component {
     );
   }
 }
+
+Add.propTypes = {
+  addMessage: PropTypes.func.isRequired,
+};
